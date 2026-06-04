@@ -486,7 +486,7 @@ def _extract_score_trajectory(chip_path: Path) -> list[int]:
     telemetry_path = chip_path / "loop_telemetry.json"
     data = _load_json_safe(telemetry_path)
     if isinstance(data, dict):
-        scores = data.get("scores", [])
+        scores = data.get("score_trajectory", data.get("scores", []))
         if isinstance(scores, list):
             for s in scores:
                 try:
